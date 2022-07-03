@@ -1,6 +1,7 @@
 import React from "react"; // JSX编译时候使用到的
 import ReactDOM from "react-dom/client"; // ReactDOM是创建根元素的时候使用到的
-import HelloWorld from "./components/helloworld";
+import State from "./components/stateComponent";
+
 const react = "React!!";
 
 // function tick() {
@@ -16,4 +17,6 @@ const react = "React!!";
 
 // setInterval(tick, 1000);
 
-ReactDOM.createRoot(document.getElementById("root")).render(<HelloWorld />);
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <State/>
+);
