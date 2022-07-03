@@ -2,6 +2,10 @@
 
 React + Ant Design + TypeScript + UmiJS
 
+## 项目地址
+
+react1 目录下同步到 gitlab，`.git`文件是在 react1 下
+
 ## 创建项目
 
 cd react-demo
