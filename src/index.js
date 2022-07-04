@@ -1,8 +1,7 @@
 import React from "react"; // JSX编译时候使用到的
 import ReactDOM from "react-dom/client"; // ReactDOM是创建根元素的时候使用到的
-import State from "./components/stateComponent";
 import Life from "./components/Life";
-
+import Sync from './components/synchronous';
 // const react = "React!!";
 
 // function tick() {
@@ -19,5 +18,5 @@ import Life from "./components/Life";
 // setInterval(tick, 1000);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Life/>
+  <Sync/>
 );

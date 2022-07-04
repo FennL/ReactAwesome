@@ -54,3 +54,20 @@ clickChange = () =>{
 }
 <button changeSon={this.clickChange}>
 ```
+## setState更新同步异步问题
+时而同步，时而异步。简单来说如果涉及React封装的事件函数(看是不是写在React的render函数中即可)，就是异步函数；如果使用原生`js`的事件绑定，就又是同步函数。
+如何控制同步还是异步？根据`isBatchingUpdates`判断是该直接更新，还是放到队列中延时更新，默认同步直接更新。
+
+
+当然，也可以在React中改成同步，使用`Async`和`Await`,这两个关键词底层是建立在promise之上，和回调函数、Promise一样专责解决异步问题
+
+```javascript
+async handler(){ 
+        await this.setState({
+            count: this.state.count + 1
+        })
+        console.log(this.state.count)
+        // 使用这种写法确实显示的与console输出的不一致，这是setState异步导致
+        // 添加async和await关键字就能改变成输出一致，注意：这里不能使用箭头函数以及需要bind(this)
+    }
+```
