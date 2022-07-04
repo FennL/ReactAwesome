@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client"; // ReactDOM是创建根元素的时候�
 import Life from "./components/Life";
 import Sync from './components/synchronous';
 import Condition from './components/conditionRender';
+import List from './components/conditionList';
 // const react = "React!!";
 
 // function tick() {
@@ -20,5 +21,6 @@ import Condition from './components/conditionRender';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <Sync/>
-  <Condition />
+  // <Condition />
+  <List/>
 );
