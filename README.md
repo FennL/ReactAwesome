@@ -71,3 +71,4 @@ async handler(){
         // 添加async和await关键字就能改变成输出一致，注意：这里不能使用箭头函数以及需要bind(this)
     }
 ```
+fafafafa
