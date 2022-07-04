@@ -11,6 +11,7 @@ class Sync extends Component {
         })
         console.log(this.state.count)
         // 使用这种写法确实显示的与console输出的不一致，这是setState异步导致
+        // 
     }
     render() { 
         return (
