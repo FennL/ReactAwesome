@@ -4,6 +4,9 @@ import Life from "./components/Life";
 import Sync from './components/synchronous';
 import Condition from './components/conditionRender';
 import List from './components/conditionList';
+import Form from './components/formDemo';
+import RefAndDOM from './components/refsAndDOM';
+
 // const react = "React!!";
 
 // function tick() {
@@ -22,5 +25,7 @@ import List from './components/conditionList';
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <Sync/>
   // <Condition />
-  <List/>
+  // <List/>
+  // <Form/>
+  <RefAndDOM/>
 );

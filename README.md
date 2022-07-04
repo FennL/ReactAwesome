@@ -81,3 +81,20 @@ async handler(){
 
 ## 列表渲染
 简单，注意`key`即可。key的作用：`setState()`引起重绘的时候，没有key的话所有标签重新渲染;有了key就只会部分重绘，达到节省资源节省渲染的作用
+
+## 表单
+#### 受控组件
+组件里的属性来源于`state`，改变通过`setState`
+#### 不受控组件
+数据比较多的情况下，推荐使用非受控组件
+
+## Ref和DOM
+ref就是DOM的引用，通常以下步骤获取非受控组件的DOM
+```javascript
+this.myRef = React.createRef(); // 1.创建引用
+// 2.引用指向标签的ref属性 或者说ref绑定标签 3.通过创建的ref引用来操作标签
+<div ref={this.myRef}>Hello<div>
+componentDidMount(){
+    this.myRef.current.style.color = "red"
+}
+```
