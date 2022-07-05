@@ -165,7 +165,7 @@ import "antd/dist/antd.css"; // 建议写在全局index.js文件中 因为一直
 ## fetch 请求数据
 
 和`ajax`类似，也是请求数据 API。原生自带
-
++ get
 ```typescript
 fetch("http://iwenwiki.com/api/blueberrypai/getIndexBanner.php")
   .then((res) => {
@@ -197,3 +197,16 @@ fetch("http://iwenwiki.com/api/blueberrypai/getIndexBanner.php")
   });
 ```
 确实是可以把一组对象的同一组属性渲染为列表内容
+
++ post
+注意：`Ajax`body里面是对象类型;`fetch`body里面是字符串类型。两种风格。当然也可以使用`queryString`将对象转码成字符串
+```javascript
+fetch("http://iwenwiki.com/api/blueberrypai/login.php",{
+    method:"POST",
+    headers:{
+        'content-type':'application/x-www-form-urlencoded',
+        'accept':'application/json,text/plain,*/*'
+    },
+    body:"user_id=iwen@qq.com&password=iwen123&verification_code=crfvw"
+})
+```
