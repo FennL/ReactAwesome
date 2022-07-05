@@ -98,3 +98,18 @@ componentDidMount(){
     this.myRef.current.style.color = "red"
 }
 ```
+## ant design
+安装依赖
+```shell
+npm install antd --save
+```
+引入样式和组件
+```javascript
+import {button} from 'antd'
+import 'antd/dist/antd.css' // 建议写在全局index.js文件中 因为一直要渲染样式
+```
+
+## 按需加载antd
+
+## .babelrc文件
+`.babelrc`文件存储了react的配置文件,此文件被隐藏，一般是需要命令`npm run eject`才能显示,若是执行的时候报错，则一般是**文件被修改**,解决方案:删掉`.git、.gitignore`,再执行会暴露出`script、config`文件夹
