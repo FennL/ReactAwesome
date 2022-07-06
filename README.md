@@ -282,4 +282,6 @@ fetch("http://iwenwiki.com/api/blueberrypai/login.php",{
     </Routers>
     </BrowerRouter>
     ```
+    ## BrowerRouter HashRouter
+    
 
