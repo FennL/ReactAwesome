@@ -265,3 +265,21 @@ fetch("http://iwenwiki.com/api/blueberrypai/login.php",{
     // 如果子路由比较多的话，可以使用router包专门处理子路由，再app.use(router)挂载
     ```
 
+    ## 路由
+    安装`npm install react-router-dom --save`
+    我们希望通过路径展示不同的组件。
+    
+    参考`reacttraining.com`
+    ```javascript
+    // 引入 router-react-dom
+    import {BrowserRouter as Router,Switch,Route,Link} from 'react-route-dom'
+
+    // 写一个js用来切换路由
+    <BrowerRouter>
+    <Routers>
+        <Route path="/home" component = {Home}></Route>
+        <Route path="/admin" component = {Admin}></Route>
+    </Routers>
+    </BrowerRouter>
+    ```
+
