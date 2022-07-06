@@ -7,6 +7,7 @@ import List from './components/conditionList';
 import Form from './components/formDemo';
 import RefAndDOM from './components/refsAndDOM';
 import FetchComponen from './components/componentFetch';
+import ProxySet from './components/proxySet';
 // const react = "React!!";
 
 // function tick() {
@@ -27,5 +28,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   // <Condition />
   // <List/>
   // <Form/>
-  <FetchComponen/>
+  // <FetchComponen/>
+  <ProxySet/>
 );

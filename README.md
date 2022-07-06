@@ -210,3 +210,58 @@ fetch("http://iwenwiki.com/api/blueberrypai/login.php",{
     body:"user_id=iwen@qq.com&password=iwen123&verification_code=crfvw"
 })
 ```
+
+## package.json解决跨域问题
+只有在同一域名下的`js对象`才可以相互访问,可以同一域名下不同文件夹下的`js对象`
+跨域解决方案：
+1. 开发模式下 
+
+    利用环境解决，使用React、Vue自带的解决方法
+
+    + 当前主要说明*开发模式跨域*问题,即在`package.json`配置
+        ```json
+        "proxy":"www.baidu.com"
+        ```
+        只需要添加这样一个属性，然后`fetch`的URL中删掉域名，即可解决跨域
+    + 使用依赖`http-proxy-middleware`,建立`setupProxy.js`文件，在`src\setProxy.js`文件中添加相应代码
+        ```javascript
+        const proxy = require("http-proxy-middleware")
+        module.exports = function(app){
+            app.use('/api',proxy({
+                target:'http://localhost:3100',
+                changeOrigin:true
+            }))
+        }
+        ```
+2. 生产模式下
+
+    利用jsonp、cors、iframe、POSTMessage解决
+
+## Node Express后台API开发
+1. 添加`express`依赖
+2. 书写js代码
+    ```javascript
+    const express = require("express")
+    const app = express()
+
+    app.listen(3100,()=>{
+        console.log("Express Server is listening at port 3100")
+    })
+
+    app.get("/api/list", (req,res) => { 
+        res.send(
+            [
+                {
+                    name:"fenn"
+                    age:23
+                },
+                {
+                    name:"jy"
+                    age:22
+                }
+            ]
+        )
+    })
+    // 如果子路由比较多的话，可以使用router包专门处理子路由，再app.use(router)挂载
+    ```
+
