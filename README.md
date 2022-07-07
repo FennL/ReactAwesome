@@ -329,4 +329,3 @@ fetch("http://iwenwiki.com/api/blueberrypai/login.php", {
    </BrowserRouter>
    ```
 
-测试`git config --global user.name FennL`
