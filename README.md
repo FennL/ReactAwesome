@@ -329,3 +329,14 @@ fetch("http://iwenwiki.com/api/blueberrypai/login.php", {
    </BrowserRouter>
    ```
 
+   打开前端源码，其实可以发现，`<Link/>`标签其实就是`<a href="/admin">`
+
+## Router exact 属性
+
+当遇到路由具有包含关系的时候，需要考虑添加`exact`属性
+
+```javascript
+<Route exact path="/admin" element={<Admin />}></Route>
+<Route path="/admin/mine" element={<Mine />}></Route>
+```
+如果不添加`exact`属性，访问`/admin/mine`的时候，会先后加载`Admin`、`Mine`属性

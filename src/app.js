@@ -17,8 +17,8 @@ class App extends Component {
                 </li>
             </ul>
         <Routes>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
+                <Route path="/home" element={<Home />}></Route>
+                <Route path="/admin" element={<Admin />}></Route>
         </Routes>
       </BrowserRouter>
     );
