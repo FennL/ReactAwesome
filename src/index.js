@@ -8,6 +8,7 @@ import Form from './components/formDemo';
 import RefAndDOM from './components/refsAndDOM';
 import FetchComponen from './components/componentFetch';
 import ProxySet from './components/proxySet';
+import App from './app';
 // const react = "React!!";
 
 // function tick() {
@@ -29,5 +30,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   // <List/>
   // <Form/>
   // <FetchComponen/>
-  <ProxySet/>
+  <App/>
 );

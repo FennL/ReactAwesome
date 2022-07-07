@@ -165,7 +165,9 @@ import "antd/dist/antd.css"; // 建议写在全局index.js文件中 因为一直
 ## fetch 请求数据
 
 和`ajax`类似，也是请求数据 API。原生自带
-+ get
+
+- get
+
 ```typescript
 fetch("http://iwenwiki.com/api/blueberrypai/getIndexBanner.php")
   .then((res) => {
@@ -191,97 +193,138 @@ fetch("http://iwenwiki.com/api/blueberrypai/getIndexBanner.php")
   })
   .then((data) => {
     console.log(data);
-    this.setState({ // 使用setState将数据写入
-        banners:data.banner
-    })
+    this.setState({
+      // 使用setState将数据写入
+      banners: data.banner,
+    });
   });
 ```
+
 确实是可以把一组对象的同一组属性渲染为列表内容
 
-+ post
-注意：`Ajax`body里面是对象类型;`fetch`body里面是字符串类型。两种风格。当然也可以使用`queryString`将对象转码成字符串
+- post
+  注意：`Ajax`body 里面是对象类型;`fetch`body 里面是字符串类型。两种风格。当然也可以使用`queryString`将对象转码成字符串
+
 ```javascript
-fetch("http://iwenwiki.com/api/blueberrypai/login.php",{
-    method:"POST",
-    headers:{
-        'content-type':'application/x-www-form-urlencoded',
-        'accept':'application/json,text/plain,*/*'
-    },
-    body:"user_id=iwen@qq.com&password=iwen123&verification_code=crfvw"
-})
+fetch("http://iwenwiki.com/api/blueberrypai/login.php", {
+  method: "POST",
+  headers: {
+    "content-type": "application/x-www-form-urlencoded",
+    accept: "application/json,text/plain,*/*",
+  },
+  body: "user_id=iwen@qq.com&password=iwen123&verification_code=crfvw",
+});
 ```
 
-## package.json解决跨域问题
+## package.json 解决跨域问题
+
 只有在同一域名下的`js对象`才可以相互访问,可以同一域名下不同文件夹下的`js对象`
 跨域解决方案：
-1. 开发模式下 
 
-    利用环境解决，使用React、Vue自带的解决方法
+1. 开发模式下
 
-    + 当前主要说明*开发模式跨域*问题,即在`package.json`配置
-        ```json
-        "proxy":"www.baidu.com"
-        ```
-        只需要添加这样一个属性，然后`fetch`的URL中删掉域名，即可解决跨域
-    + 使用依赖`http-proxy-middleware`,建立`setupProxy.js`文件，在`src\setProxy.js`文件中添加相应代码
-        ```javascript
-        const proxy = require("http-proxy-middleware")
-        module.exports = function(app){
-            app.use('/api',proxy({
-                target:'http://localhost:3100',
-                changeOrigin:true
-            }))
-        }
-        ```
+   利用环境解决，使用 React、Vue 自带的解决方法
+
+   - 当前主要说明*开发模式跨域*问题,即在`package.json`配置
+     ```json
+     "proxy":"www.baidu.com"
+     ```
+     只需要添加这样一个属性，然后`fetch`的 URL 中删掉域名，即可解决跨域
+   - 使用依赖`http-proxy-middleware`,建立`setupProxy.js`文件，在`src\setProxy.js`文件中添加相应代码
+     ```javascript
+     const proxy = require("http-proxy-middleware");
+     module.exports = function (app) {
+       app.use(
+         "/api",
+         proxy({
+           target: "http://localhost:3100",
+           changeOrigin: true,
+         })
+       );
+     };
+     ```
+
 2. 生产模式下
 
-    利用jsonp、cors、iframe、POSTMessage解决
+   利用 jsonp、cors、iframe、POSTMessage 解决
 
-## Node Express后台API开发
+## Node Express 后台 API 开发
+
 1. 添加`express`依赖
-2. 书写js代码
-    ```javascript
-    const express = require("express")
-    const app = express()
+2. 书写 js 代码
 
-    app.listen(3100,()=>{
-        console.log("Express Server is listening at port 3100")
-    })
+   ```javascript
+   const express = require("express")
+   const app = express()
 
-    app.get("/api/list", (req,res) => { 
-        res.send(
-            [
-                {
-                    name:"fenn"
-                    age:23
-                },
-                {
-                    name:"jy"
-                    age:22
-                }
-            ]
-        )
-    })
-    // 如果子路由比较多的话，可以使用router包专门处理子路由，再app.use(router)挂载
-    ```
+   app.listen(3100,()=>{
+       console.log("Express Server is listening at port 3100")
+   })
 
-    ## 路由
-    安装`npm install react-router-dom --save`
-    我们希望通过路径展示不同的组件。
-    
-    参考`reacttraining.com`
-    ```javascript
-    // 引入 router-react-dom
-    import {BrowserRouter as Router,Switch,Route,Link} from 'react-route-dom'
+   app.get("/api/list", (req,res) => {
+       res.send(
+           [
+               {
+                   name:"fenn"
+                   age:23
+               },
+               {
+                   name:"jy"
+                   age:22
+               }
+           ]
+       )
+   })
+   // 如果子路由比较多的话，可以使用router包专门处理子路由，再app.use(router)挂载
+   ```
 
-    // 写一个js用来切换路由
-    <BrowerRouter>
-    <Routers>
-        <Route path="/home" component = {Home}></Route>
-        <Route path="/admin" component = {Admin}></Route>
-    </Routers>
-    </BrowerRouter>
-    ```
-    ## BrowerRouter HashRouter
-    
+   ## 路由
 
+   安装`npm install react-router-dom --save`
+   我们希望通过路径展示不同的组件。
+
+   参考`reacttraining.com`
+
+   ```javascript
+   // 引入 router-react-dom
+   import {
+     BrowserRouter as Router,
+     Switch,
+     Route,
+     Link,
+   } from "react-route-dom";
+
+   // 写一个js用来切换路由
+   <BrowerRouter>
+     <Routers>
+       <Route path="/home" component={Home}></Route>
+       <Route path="/admin" component={Admin}></Route>
+     </Routers>
+   </BrowerRouter>;
+   ```
+
+   ## BrowerRouter HashRouter
+
+   简单来说是 URL 中`\`和`#`的区别
+
+   ## Router-Link
+
+   `Router-Link`往往才是真正有用的组件，因为它可以让组件达到`点击跳转`的动作
+   `Routes`、`Route`组件都不会渲染，只起路由作用
+
+   ```javascript
+   <BrowserRouter>
+     <ul>
+       <li>
+         <Link to="/home">home</Link> // link本质也属于不显示标签，显示能力是<li>提供
+       </li>
+       <li>
+         <Link to="/admin">admin</Link>
+       </li>
+     </ul>
+     <Routes>
+       <Route path="/home" element={<Home />}></Route>
+       <Route path="/admin" element={<Admin />}></Route>
+     </Routes>
+   </BrowserRouter>
+   ```
