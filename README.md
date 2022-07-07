@@ -340,3 +340,14 @@ fetch("http://iwenwiki.com/api/blueberrypai/login.php", {
 <Route path="/admin/mine" element={<Mine />}></Route>
 ```
 如果不添加`exact`属性，访问`/admin/mine`的时候，会先后加载`Admin`、`Mine`属性
+一般来说`/`路径是一定要加`exact`
+
+## Router Strict 属性
+这个属性是用来解决我之前就有疑惑的一个问题
+```javascript
+localhost:3000/admin
+localhost:3000/admin/
+
+<Route Strict path="/admin" element={<Admin>}></Route>
+```
+添加`strict`属性就只有`/admin`才能访问;不添加的话会默认`/admin`和`/admin/`都能访问
