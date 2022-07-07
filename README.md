@@ -351,3 +351,25 @@ localhost:3000/admin/
 <Route Strict path="/admin" element={<Admin>}></Route>
 ```
 添加`strict`属性就只有`/admin`才能访问;不添加的话会默认`/admin`和`/admin/`都能访问
+使用`react-router-dom`的时候要知道`v5`版本和`v6`版本的一些用法是不同的，比如没有`Switch`
+
+## v5 render
+v5版本可以使用`render`属性向下游组件传递信息
+```javascript
+<Route Strict path="/admin" render={props =>{<Admin props={props} animate={true}>}}></Route>
+```
+现在`render`和`component`都被`element`代替
+```javascript
+<Route Strict path="/admin" element={props =>{<Admin props={props} animate={true}>}}></Route>
+```
+
+## NavLink 对多个跳转`<li>`标签进行高亮
+1. 将原来使用的`<Link>`标签替换成`<NavLink>`标签
+2. 通过原生HTML可以看到，点击之后会多一个`className='active'`新建`css`文件
+```css
+.active{
+    color:"red"
+}
+```
+之后每次点击标签，跳转后就会高亮，注意使用`exact`关键字避免包含关系
+
