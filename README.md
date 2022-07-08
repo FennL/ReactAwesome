@@ -373,3 +373,32 @@ v5版本可以使用`render`属性向下游组件传递信息
 ```
 之后每次点击标签，跳转后就会高亮，注意使用`exact`关键字避免包含关系
 
+## Route URL Parameters
+1. 路由参数以`/`区分
+通过URL里携带参数，将不同参数渲染到对应URL页面里
+```javascript
+localhost:3000/admin/1000/fenn // 对应两个参数分别是1000和fenn
+
+对应<Route path="/admin:id?:name?"> // :id?  ?表示可以不传值给id ，不加?容易404
+```
+
+2. 路由参数以`?name=fenn&id=1000`
+```javascript
+localhost:3000?name=fenn&id=123
+
+<Route path="/home?name=fenn&id=123"></Route>
+```
+使用`useSearchParams`方法 v6版本是这样做
+```javascript
+import {useSearchParams} from 'react-router-dom'
+function Home(){
+    const [searchParams,setSearchParams] = useSearchParams();
+    console.log(seachParams.get('name'));
+    setSearchParams({
+        id:"12345"
+    })
+    return (
+        <div>hoem</div>
+    )
+}
+```
