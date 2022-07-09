@@ -18,14 +18,15 @@ class App extends Component {
             <NavLink to="/admin/">admin</NavLink>
           </li>
           <li>
-            <NavLink to="/* ">NotFound</NavLink>
+            <NavLink to="* ">NotFound</NavLink>
           </li>
         </ul>
         <Routes>
-          <Route exact path="/" element={<Home />}></Route>
-          {/* <Route exact path="/admin/:id?" element={<Admin />}></Route> */}
-          <Route exact path="/admin/:id?" element={<Admin />}></Route>
-          <Route path="*" element={<NotFound name="fafa" age={23} />}></Route>
+          <Route path="/" element={<Home />}>
+            {/* <Route exact path="/admin/:id?" element={<Admin />}></Route> */}
+            <Route path="admin/:id" element={<Admin />}></Route>
+            <Route path="*" element={<NotFound name="fafa" age={23} />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     );

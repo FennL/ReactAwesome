@@ -4,7 +4,7 @@ import { useParams} from 'react-router-dom'
 function Admin() {
     console.log(this.props);
     const params = useParams();
-  return <div>{ params.id}</div>
+  return <div>admin:{ params.id}</div>
 
   
 }
