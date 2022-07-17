@@ -416,3 +416,46 @@ function App(){
     )
 }
 ```
+第二种重定向的方法：使用props代码重定向
+`props`中的`push`和`replace`支持重定向，push指前一个页面仍然在内存中，replace则是前一个页面对象从内存删掉
+```javascript
+    const Mine = (props) =>{
+        const clickHandle = () =>{
+            props.history.replace("/");
+            // props/history.push("/");
+        }
+
+        return(
+            <div>
+            Mine <Button onClick={clickHandle}>回到Home</Button>
+            </div>
+        )
+    }
+```
+## withRouter
+是一种高阶组件，也能实现路由跳转
+
+## Prompt
+钩子函数，可以弹出一个提示框警示一下
+
+## 路由嵌套
+```javascript
+<Book>
+    <Switch>
+        <Route path="/book/javabook" component={JavaBook}></Route>
+        <Route path="book/webbook" component={WebBook}></Route>
+    </Switch>
+</Book>
+// Book.jsx
+import React from "react"
+export defalut class Book extends React.Component{
+    render(
+        return(
+            <div>
+                Book:
+                {this.props.children}
+            </div>
+        )
+    )
+}
+```
