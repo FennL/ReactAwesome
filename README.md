@@ -402,3 +402,17 @@ function Home(){
     )
 }
 ```
+## 重定向
+```javascript
+import {Router,Swich,Route,Redirect} from "react-router-dom"
+function App(){
+    return (
+        <Router>
+            <Switch>
+                <Redirect from="/hellomine" to="/mine"></Redirect>
+                <Route path="/path" component={Mine}>
+            </Switch>
+        </Router>
+    )
+}
+```
